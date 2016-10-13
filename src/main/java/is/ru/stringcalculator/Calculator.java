@@ -67,6 +67,9 @@ public class Calculator {
 			if(numbers[i] < 0) {
 				throw new IllegalArgumentException(negativeNumberErrorString(numbers));
 			}
+			else if(numbers[i] >= 1000) {
+				numbers[i] = 0;
+			}
 		}
 	}
 }

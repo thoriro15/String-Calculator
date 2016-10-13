@@ -50,4 +50,9 @@ public class CalculatorTest {
 	   	Calculator.add("-1,2,-5");
 
 	}
+
+	@Test
+	public void biggerThanThousand() {
+		assertEquals(2, Calculator.add("1001,2"));
+	}
 }
