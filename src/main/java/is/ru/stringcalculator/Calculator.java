@@ -6,8 +6,8 @@ public class Calculator {
 		if(text == "") {
 			return 0;
 		}
-		else if(text.contains(",")) {
-			String[] numbers = splitString(text);
+		else if(text.contains(",") || text.contains("\n")) {
+			int[] numbers = convertNumbersToInt(splitString(text));
 			return sum(numbers);
 		}
 		else {
@@ -15,17 +15,24 @@ public class Calculator {
 		}
 	}
 
+	private static int[] convertNumbersToInt(String[] numbers) {
+		int[] intNumbers = new int[numbers.length];
+		for(int i = 0; i < numbers.length; i++) {
+			intNumbers[i] = toInt(numbers[i]);
+		}
+		return intNumbers;
+	}
+
 	private static int toInt(String number) {
 		return Integer.parseInt(number);
 	}
 
-	private static int sum(String[] numbers) {
+	private static int sum(int[] numbers) {
 		int sum = 0;
 
 		for(int i = 0; i < numbers.length; i++) {
-			int currentNumber = toInt(numbers[i]);
-			checkIfNegative(currentNumber);
-			sum += currentNumber;
+			checkIfNegative(numbers[i]);
+			sum += numbers[i];
 		}
 		return sum;
 	}
