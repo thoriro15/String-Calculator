@@ -6,13 +6,10 @@ public class Calculator {
 		if(text == "") {
 			return 0;
 		}
-		else if(text.contains(",") || text.contains("\n")) {
+		else {
 			int[] numbers = convertNumbersToInt(splitString(text));
 			validateNumbers(numbers);
 			return sum(numbers);
-		}
-		else {
-			return toInt(text);
 		}
 	}
 
@@ -38,7 +35,15 @@ public class Calculator {
 	}
 
 	private static String[] splitString(String text) {
-		String[] numbers = text.split(",|\n");
+		String[] numbers;
+		if(text.startsWith("//")) {
+			String delimiter = Character.toString(text.charAt(2));
+			String substringText = text.substring(text.indexOf("\n")+1, text.length());
+			numbers = substringText.split(delimiter);
+		}
+		else {
+			numbers = text.split(",|\n");
+		}
 		return numbers;
 	}
 
@@ -67,7 +72,7 @@ public class Calculator {
 			if(numbers[i] < 0) {
 				throw new IllegalArgumentException(negativeNumberErrorString(numbers));
 			}
-			else if(numbers[i] >= 1000) {
+			else if(numbers[i] > 1000) {
 				numbers[i] = 0;
 			}
 		}
