@@ -45,8 +45,8 @@ public class Calculator {
 	private static void validateNumbers(int[] numbers) {
 		for(int i = 0; i < numbers.length; i++) {
 			if(numbers[i] < 0) {
-				throw new IllegalArgumentException("Negatives not allowed: -1");
-		}
+				throw new IllegalArgumentException("Negatives not allowed: " + numbers[i]);
+			}
 		}
 	}
 }
