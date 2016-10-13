@@ -42,4 +42,12 @@ public class CalculatorTest {
 	   	Calculator.add("-1,2");
 
 	}
+
+	@Test
+	public void testManyNegatives() throws IllegalArgumentException {
+	    thrown.expect(IllegalArgumentException.class);
+	    thrown.expectMessage("Negatives not allowed: -1,-5");
+	   	Calculator.add("-1,2,-5");
+
+	}
 }

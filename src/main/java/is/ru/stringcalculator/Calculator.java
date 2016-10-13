@@ -44,11 +44,18 @@ public class Calculator {
 
 	private static String negativeNumberErrorString(int[] numbers) {
 		String error = "Negatives not allowed: ";
-
+		int negativeCount = 0;
 		for(int i = 0; i < numbers.length; i++) {
 			if(numbers[i] < 0) {
-				error += numbers[i];
-				break;
+				if(negativeCount == 0) {
+					error += numbers[i];
+					negativeCount++;
+				}
+				else {
+					error += ("," + numbers[i]);
+					negativeCount++;
+				}
+				
 			}
 		}
 
