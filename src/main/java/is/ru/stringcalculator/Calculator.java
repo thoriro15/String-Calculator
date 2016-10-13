@@ -18,4 +18,8 @@ public class Calculator {
 	private static int toInt(String number) {
 		return Integer.parseInt(number);
 	}
+
+	private static int sum(String[] numbers) {
+		return toInt(numbers[0]) + toInt(numbers[1]);
+	}
 }
