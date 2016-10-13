@@ -8,6 +8,7 @@ public class Calculator {
 		}
 		else if(text.contains(",") || text.contains("\n")) {
 			int[] numbers = convertNumbersToInt(splitString(text));
+			validateNumbers(numbers);
 			return sum(numbers);
 		}
 		else {
@@ -31,7 +32,6 @@ public class Calculator {
 		int sum = 0;
 
 		for(int i = 0; i < numbers.length; i++) {
-			checkIfNegative(numbers[i]);
 			sum += numbers[i];
 		}
 		return sum;
@@ -42,9 +42,11 @@ public class Calculator {
 		return numbers;
 	}
 
-	private static void checkIfNegative(int number) {
-		if(number < 0) {
-			throw new IllegalArgumentException("Negatives not allowed: -1");
+	private static void validateNumbers(int[] numbers) {
+		for(int i = 0; i < numbers.length; i++) {
+			if(numbers[i] < 0) {
+				throw new IllegalArgumentException("Negatives not allowed: -1");
+		}
 		}
 	}
 }
