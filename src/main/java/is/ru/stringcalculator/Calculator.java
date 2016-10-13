@@ -23,7 +23,9 @@ public class Calculator {
 		int sum = 0;
 
 		for(int i = 0; i < numbers.length; i++) {
-			sum += toInt(numbers[i]);
+			int currentNumber = toInt(numbers[i]);
+			checkIfNegative(currentNumber);
+			sum += currentNumber;
 		}
 		return sum;
 	}
@@ -31,5 +33,11 @@ public class Calculator {
 	private static String[] splitString(String text) {
 		String[] numbers = text.split(",|\n");
 		return numbers;
+	}
+
+	private static void checkIfNegative(int number) {
+		if(number < 0) {
+			throw new IllegalArgumentException("Negatives not allowed: -1");
+		}
 	}
 }
