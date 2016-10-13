@@ -29,7 +29,7 @@ public class Calculator {
 	}
 
 	private static String[] splitString(String text) {
-		String[] numbers = text.split(",");
+		String[] numbers = text.split(",|\n");
 		return numbers;
 	}
 }

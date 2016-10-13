@@ -24,4 +24,9 @@ public class CalculatorTest {
 	public void testFiveNumbers() {
 		assertEquals(15 , Calculator.add("1,2,3,4,5"));
 	}
+
+	@Test 
+	public void testNewLineSplit() {
+		assertEquals(6, Calculator.add("1\n2,3"));
+	}
 }
