@@ -42,10 +42,23 @@ public class Calculator {
 		return numbers;
 	}
 
+	private static String negativeNumberErrorString(int[] numbers) {
+		String error = "Negatives not allowed: ";
+
+		for(int i = 0; i < numbers.length; i++) {
+			if(numbers[i] < 0) {
+				error += numbers[i];
+				break;
+			}
+		}
+
+		return error;
+	}
+
 	private static void validateNumbers(int[] numbers) {
 		for(int i = 0; i < numbers.length; i++) {
 			if(numbers[i] < 0) {
-				throw new IllegalArgumentException("Negatives not allowed: " + numbers[i]);
+				throw new IllegalArgumentException(negativeNumberErrorString(numbers));
 			}
 		}
 	}
